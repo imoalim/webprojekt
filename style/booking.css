@@ -1,0 +1,59 @@
+.book-wrapper .flex-container{
+    height: 100vh;
+    padding: 2% 10% 10%;
+}
+
+.book-wrapper .elem-group {
+    margin: 20px 0;
+}
+
+.book-wrapper .elem-group {
+    width: 49%;
+    display: inline-block;
+    margin-left: 1%;
+}
+
+.book-wrapper label {
+    display: block;
+    font-family: 'Nanum Gothic';
+    padding-bottom: 10px;
+    font-size: 1.25em;
+}
+
+.book-wrapper input, select, textarea {
+    border-radius: 2px;
+    border: 2px solid #777;
+    box-sizing: border-box;
+    font-size: 1.25em;
+    font-family: 'Nanum Gothic';
+    width: 100%;
+    padding: 10px;
+}
+
+.book-wrapper .elem-group input {
+    width: 95%;
+    display: inline-block;
+}
+
+.book-wrapper textarea {
+    height: 250px;
+}
+
+.book-wrapper hr {
+    border: 1px dotted #ccc;
+}
+
+.book-wrapper button {
+    height: 50px;
+    background: #0015ff;
+    border: none;
+    color: white;
+    font-size: 1.25em;
+    font-family: 'Nanum Gothic';
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.book-wrapper button:hover {
+    border: 2px solid black;
+}
