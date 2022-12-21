@@ -75,5 +75,19 @@
 .news-wrapper {
     height: 100vh;
 }
+.news {
+    width: 200px;
+    height: 200px;
+    padding: 5px;
+}
 
+.news img {
+    width: 100%;
+    height: 100%;
+}
+
+.news a {
+    text-decoration: none;
+    color: black;
+}
 

@@ -36,30 +36,20 @@ if (isset($_SESSION['username']) && ($_SESSION['username']) == 'admin' ) {
 }
 
 ?>
+    <!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="../style/stylesheet.css">
+        <title>NEWS</title>
+    </head>
+    <body style="height: 100vh">
+<header><h1 class="d-flex justify-content-center">NEWS</h1></header>
 
-
-    <title>View</title>
-    <style>
-        .news {
-            width: 200px;
-            height: 200px;
-            padding: 5px;
-        }
-
-        .news img {
-            width: 100%;
-            height: 100%;
-        }
-
-        a {
-            text-decoration: none;
-            color: black;
-        }
-    </style>
-
-
-    <!--<a href="news.php">&#8592;</a>-->
-    <div class="d-flex justify-content-center">
+    <div class="" style="height: ">
         <?php
         include "../includes/config.php";
 
@@ -71,16 +61,21 @@ if (isset($_SESSION['username']) && ($_SESSION['username']) == 'admin' ) {
         if (mysqli_num_rows($res) > 0) {
             while ($news = mysqli_fetch_assoc($res)) { ?>
                 <div class="news">
-                    <?= $news['content'] ?>
-                    <img src="../uploads/<?= $news['img_url'] ?>" alt="">
+                    <p class="text-right"></p> <?= $news['content'] ?>
+                    <img src="../uploads/<?= $news['img_url'] ?>"  class="rounded mx-auto d-block" alt="">
                 </div>
             <?php }
-
-
-//include_once '../includes/footer.php';
         } ?>
 
     </div>
+
+    </body>
+    </html>
+
+<?php
+include_once '../includes/footer.php';
+?>
+
 
 
 <?php
