@@ -13,7 +13,7 @@ if (isset($_SESSION['username']) && ($_SESSION['username']) == 'admin' ) {
     echo "<div class='col-12 text-center'>
             <form action='../includes/newsUpload_inc.php' method='post' enctype='multipart/form-data'>
                 <div>
-                   <p class=''>You are logged in as admin, you can upload .... </p>                   
+                   <p class=''>You are logged in as admin, you can upload something </p>                   
                 </div>
                 <div>
                <textarea class='col-6' id='content' name='content' rows='4' cols='50'>
@@ -46,10 +46,12 @@ if (isset($_SESSION['username']) && ($_SESSION['username']) == 'admin' ) {
         <link rel="stylesheet" href="../style/stylesheet.css">
         <title>NEWS</title>
     </head>
-    <body style="height: 100vh">
+    <body>
 <header><h1 class="d-flex justify-content-center">NEWS</h1></header>
 
-    <div class="" style="height: ">
+<section class="d-flex justify-content-center">
+
+    <div class="row " style="padding-left:10%;padding-right:10%; ">
         <?php
         include "../includes/config.php";
 
@@ -60,14 +62,18 @@ if (isset($_SESSION['username']) && ($_SESSION['username']) == 'admin' ) {
 
         if (mysqli_num_rows($res) > 0) {
             while ($news = mysqli_fetch_assoc($res)) { ?>
-                <div class="news">
-                    <p class="text-right"></p> <?= $news['content'] ?>
-                    <img src="../uploads/<?= $news['img_url'] ?>"  class="rounded mx-auto d-block" alt="">
+                <div class="col-10" style="margin: 10%">
+                    <img src="../uploads/<?= $news['img_url'] ?>"  class="rounded mx-auto d-block" style="width:80%; height: auto%;" alt="">
+                    <p class="text-align"></p> <?= $news['content'] ?>
+                    <br>
+                    <a href="#" style="text-decoration: none; margin: 0.5%" class="btn btn-outline-primary">Learn More</a>
                 </div>
             <?php }
         } ?>
 
     </div>
+</section>
+
 
     </body>
     </html>
