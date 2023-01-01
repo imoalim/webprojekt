@@ -54,11 +54,15 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <?php
-                if(isset($_SESSION["username"])) {
+            if (isset($_SESSION['username']) && ($_SESSION['username']) == 'admin' ){
+                echo '<li class="nav-item"><a class="nav-link active" aria-current="page" href="'.$path.'pages/userverwaltung.php">Userverwaltung</a></li>';
+                echo '<li class="nav-item"><a class="nav-link" aria-current="page" href="'.$path.'includes/logout.inc.php">Abmelden</a></li>';
+            }
+               if(isset($_SESSION["username"]) && ($_SESSION['username']) != 'admin') {
                     echo '<li class="nav-item"><a class="nav-link" aria-current="page" href="'.$path.'includes/logout.inc.php">Abmelden</a></li>';
                     echo '<li class="nav-item"><a class="nav-link active" aria-current="page" href="'.$path.'pages/profil.php">Profil</a></li>';
                 }
-                else {
+                 if(empty($_SESSION)){
                     echo '<li class="nav-item"><a class="nav-link" aria-current="page" href="'.$path.'pages/signup.php">Registrieren</a></li>';
                     echo '<li class="nav-item"><a class="nav-link active" aria-current="page" href="'.$path.'pages/login.php">Login</a></li>';
                 }
