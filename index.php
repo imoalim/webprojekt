@@ -13,7 +13,7 @@
         }
         else {
           echo "<div class='col-12'>
-                  <span class='align-middle p-1'>Hotel am Graben</span>
+                  <span class='align-middle p-1'>Hotel am OPER</span>
                 </div>";
         }
       ?>
