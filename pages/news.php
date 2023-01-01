@@ -63,7 +63,7 @@ if (isset($_SESSION['username']) && ($_SESSION['username']) == 'admin' ) {
 
 <section class="">
 
-    <div class="row " style="padding-left:10%;padding-right:5%; ">
+    <div class="row justify-content-md-center" style="padding-left:10%;padding-right:5%; ">
         <?php
         include "../includes/config.php";
 
@@ -74,7 +74,7 @@ if (isset($_SESSION['username']) && ($_SESSION['username']) == 'admin' ) {
 
         if (mysqli_num_rows($res) > 0) {
             while ($news = mysqli_fetch_assoc($res)) { ?>
-                <div class="col-8" style="margin: 5%">
+                <div class="col-8 " style="margin: 5%">
                     <time class="d-flex justify-content-left"><h5>Time added:</h5> <br><?= $news['time'] ?> </time>
                     <a target="_blank" href="../uploads/<?= $news['img_url'] ?>">
                         <img src="../uploads/<?= $news['img_url'] ?>"  class="rounded mx-auto d-block" style="width:60%; height: auto%; margin: .5%" alt="">
