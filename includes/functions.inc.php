@@ -140,6 +140,7 @@ function loginUser($conn, $username, $password)
         $_SESSION["userid"] = $usernameExists["usersID"];
         $_SESSION["username"] = $usernameExists["usersUsername"];
         $_SESSION["userfname"] = $usernameExists["usersFName"];
+        $_SESSION["useremail"] = $usernameExists["usersEmail"];
         header("location: ../index.php");
         exit();
     }
