@@ -44,6 +44,18 @@ if (isset($_SESSION['username']) && ($_SESSION['username']) == 'admin' ) {
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="../style/stylesheet.css">
+        <style>
+            img {
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                padding: 5px;
+                width: 150px;
+            }
+
+            img:hover {
+                box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+            }
+        </style>
         <title>NEWS</title>
     </head>
     <body>
@@ -63,10 +75,13 @@ if (isset($_SESSION['username']) && ($_SESSION['username']) == 'admin' ) {
         if (mysqli_num_rows($res) > 0) {
             while ($news = mysqli_fetch_assoc($res)) { ?>
                 <div class="col-10" style="margin: 10%">
-                    <img src="../uploads/<?= $news['img_url'] ?>"  class="rounded mx-auto d-block" style="width:80%; height: auto%;" alt="">
+                    <time class="d-flex justify-content-center"><h5>Time added:</h5> <br><?= $news['time'] ?> </time>
+                    <a target="_blank" href="../uploads/<?= $news['img_url'] ?>">
+                        <img src="../uploads/<?= $news['img_url'] ?>"  class="rounded mx-auto d-block" style="width:60%; height: auto%;" alt="">
+                    </a>
                     <p class="text-align"></p> <?= $news['content'] ?>
                     <br>
-                    <a href="#" style="text-decoration: none; margin: 0.5%" class="btn btn-outline-primary">Learn More</a>
+                   <!-- <a href="#" style="text-decoration: none; margin: 0.5%" class="btn btn-outline-primary">Learn More</a> -->
                 </div>
             <?php }
         } ?>
