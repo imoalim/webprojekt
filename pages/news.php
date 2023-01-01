@@ -61,9 +61,9 @@ if (isset($_SESSION['username']) && ($_SESSION['username']) == 'admin' ) {
     <body>
 <header><h1 class="d-flex justify-content-center">NEWS</h1></header>
 
-<section class="d-flex justify-content-center">
+<section class="">
 
-    <div class="row " style="padding-left:10%;padding-right:10%; ">
+    <div class="row " style="padding-left:10%;padding-right:5%; ">
         <?php
         include "../includes/config.php";
 
@@ -74,12 +74,12 @@ if (isset($_SESSION['username']) && ($_SESSION['username']) == 'admin' ) {
 
         if (mysqli_num_rows($res) > 0) {
             while ($news = mysqli_fetch_assoc($res)) { ?>
-                <div class="col-10" style="margin: 10%">
-                    <time class="d-flex justify-content-center"><h5>Time added:</h5> <br><?= $news['time'] ?> </time>
+                <div class="col-8" style="margin: 5%">
+                    <time class="d-flex justify-content-left"><h5>Time added:</h5> <br><?= $news['time'] ?> </time>
                     <a target="_blank" href="../uploads/<?= $news['img_url'] ?>">
-                        <img src="../uploads/<?= $news['img_url'] ?>"  class="rounded mx-auto d-block" style="width:60%; height: auto%;" alt="">
+                        <img src="../uploads/<?= $news['img_url'] ?>"  class="rounded mx-auto d-block" style="width:60%; height: auto%; margin: .5%" alt="">
                     </a>
-                    <p class="text-align"></p> <?= $news['content'] ?>
+                    <p class="d-flex justify-content-center"> <?= $news['content'] ?>  </p>
                     <br>
                    <!-- <a href="#" style="text-decoration: none; margin: 0.5%" class="btn btn-outline-primary">Learn More</a> -->
                 </div>
