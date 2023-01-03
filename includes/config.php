@@ -1,10 +1,5 @@
 <?php
 
-// $serverName = "localhost";
-// $dBUsername = "root";
-// $dBPassword = "";
-// $dBName = "website1";
-
 $serverName = "localhost";
 $dBUsername = "Bob";
 $dBPassword = "123";

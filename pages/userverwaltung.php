@@ -1,93 +1,84 @@
 <?php
-include "../includes/config.php";
-/*
-
-$sql = "SELECT * FROM users ORDER BY usersID";
-
-$res = mysqli_query($conn, $sql);
-
-if (mysqli_num_rows($res) > 0) {
-    while ($user = mysqli_fetch_assoc($res)) { ?>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item"><?= $user['usersID'] ?> </li>
-            <li class="list-group-item"><?= $user['usersUsername'] ?> </li>
-            <li class="list-group-item"><?= $user['usersFName'] ?> </li>
-            <li class="list-group-item"><?= $user['usersEmail'] ?> </li>
-        </ul>
-    <?php }
-} */
 
 include "../includes/header.php";
 include "../includes/config.php";
-
 ?>
-<div class="form-wrapper">
-    <div class="container">
-        <form class="row g-2" action="../includes/userUpdate.php" method="POST">
-            <?php
-            if (isset($_GET['error'])) {
-                $a = $_GET ['error'];
-                echo "<div class='d-flex justify-content-center'> $a </div>";
-            }
-            include "../includes/functions.inc.php";
-            $sql = "SELECT * FROM users ORDER BY usersID";
-            $res = mysqli_query($conn, $sql);
-            if ($res) {
+<div class="container-fluid px-4" style="height: 100vh;">
+    <h1 class="mt-4">Users</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Dashboard</li>
+        <li class="breadcrumb-item">Users</li>
+    </ol>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Registered Users</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>userID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Username</th>
+                            <th>Roles</th>
+                            <th>Edit</th>
+                            <th>Userstatus</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <form action="../includes/admin_userUpdate.php" method="POST">
+                            <?php
 
-                if (mysqli_num_rows($res) > 0) {
-                    while ($row = mysqli_fetch_array($res)) {
-                        //print_r($row ['usersUsername']);
-                        ?>
-                        <div class="col-12">
-                            <h2>User <?php  echo $row ['usersUsername'] ?></h2>
-                            <p>Bitte ändern sie wie gewünscht!</p>
-                            <hr>
-                        </div>
-                        <!-- TODO Speicher Variablen -->
-                        <div class="col-sm-6 my-2">
-                            <input type="text" class="form-control py-2" id="fname" name="fname" placeholder="Vorname"
-                                   required="required" value="<?php echo $row ['usersFName'] ?>">
-                        </div>
-                        <div class="col-sm-6 my-2">
-                            <input type="text" class="form-control py-2" id="lname" name="lname" placeholder="Nachname"
-                                   required="required" value="<?php echo $row ['usersLName'] ?>">
-                        </div>
-                        <div class="col-md-12 my-2">
-                            <input type="text" class="form-control py-2" id="username" name="username"
-                                   placeholder="Username" required="required"
-                                   value="<?php echo $row ['usersUsername'] ?>">
-                        </div>
-                        <div class="col-md-12 my-2">
-                            <input type="email" class="form-control py-2" id="email" name="email" placeholder="Email"
-                                   required="required" value="<?php echo $row ['usersEmail'] ?>">
-                        </div>
-                        <div class="col-md-12 my-2">
-                            <input type="password" class="form-control py-2" id="current_password"
-                                   name="current_password" placeholder="Altes Passwort bestätigen" required="required"
-                                   value="<?php echo $row ['usersPassword'] ?>">
-                        </div>
-                        <div class="col-md-12 my-2">
-                            <input type="password" class="form-control py-2" id="new_password" name="new_password"
-                                   placeholder="Neues Passwort" required="required" value="">
-                        </div>
-                        <div class="col-md-12 my-2">
-                            <input type="password" class="form-control py-2" id="confirm_new_password"
-                                   name="confirm_new_password" placeholder="Neues Passwort bestätigen"
-                                   required="required" value="">
-                        </div>
-                        <div class="col-md-12 my-2">
-                            <button type="submit" name="Update" class="btn btn-primary btn-lg">Update</button>
-                        </div>
+                            if (isset($_GET['error'])) {
+                                $a = $_GET ['error'];
+                                echo "<div class='d-flex justify-content-center'> $a </div>";
+                            }
+                            //selecting everyone except admiin
+                            $sql = "SELECT * FROM users";
+                            $res = mysqli_query($conn, $sql);
+                            if (mysqli_num_rows($res) > 0) {
+                                foreach ($res as $row) {
+                                    //print_r($row ['usersUsername']);
+                                    ?>
+                                    <tr>
+                                        <td style="font-size: 1.5vw"><?php echo $row['usersID'] ?></td>
+                                        <td style="font-size: 1.5vw"><?php echo $row['usersFName'] ?></td>
+                                        <td style="font-size: 1.5vw"><?php echo $row['usersLName'] ?></td>
+                                        <td style="font-size: 1.5vw"><?php echo $row['usersEmail'] ?></td>
+                                        <td style="font-size: 1.5vw"><?php echo $row['usersUsername'] ?></td>
+                                        <td style="font-size: 1.5vw">
+                                            <?php
+                                            if ($row['usersID'] == '111') {
+                                                echo "Admin";
+                                            } else {
+                                                echo "User";
+                                            }
+                                            ?>
+                                        </td>
+                                        <!-- TODO:HIER IST WAHRSCHEINLICH DER FEHLER-->
+                                        <td><a href="../includes/edit-user.php?value=<?=$row["usersID"];?>"
+                                               class="btn btn-success">Edit</a></td>
+                                        <td>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                }
+                            }
+                            ?>
+                        </form>
+                        </tbody>
+                    </table>
 
-                        <?php
-                    }
-                }
-            }
+                </div>
+            </div>
+        </div>
 
-            ?>
-
-        </form>
     </div>
 </div>
-
+<?php
+include_once '../includes/footer.php';
 ?>

@@ -14,28 +14,20 @@ if (isset($_POST['Update'])) {
     $hash_new_password = password_hash($new_password, PASSWORD_DEFAULT);
 
     //check if current pwassword is corrcect
-    $sql = "SELECT * FROM users WHERE usersID= '$_SESSION[userid]'";
+    $sql = "SELECT * FROM users ORDER BY usersID";
     $res = mysqli_query($conn, $sql);
     $row = mysqli_fetch_object($res);
-
-    if (password_verify($current_password, $row->usersPassword)) {
-        //check if password is same
-        if ($new_password == $confirm_new_password) {
             // update
             $sql = "UPDATE users SET usersFName='" . $fname . "', 
                                      usersLName = '" . $lname . "', 
                                      usersEmail = '" . $email . "', 
                                      usersUsername = '" . $username . "', 
-                                     usersPassword = '" . $hash_new_password . "' WHERE usersID='$_SESSION[userid]'";
-            print_r($sql);
+                                     usersPassword = '" . $hash_new_password . "' WHERE usersID='$row [usersUsername]'";
+            print_r($fname);
             mysqli_query($conn, $sql);
             $msg = "<p> Profile has been successfully updated. </p>";
         } else {
             $msg = "<p> Password  does not match. </p>";
         }
-    } else {
-        $msg = "<p> Password  is not correct. </p>";
-    }
-    header("Location: ../pages/profil.php?error=$msg");
 
-}
+    header("Location: ../pages/userverwaltung.php?error=$msg");
