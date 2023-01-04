@@ -1,5 +1,6 @@
 <?php
 include "config.php";
+include "functions.inc.php";
 session_start();
 if (isset($_POST['Update'])) {
     //get all input fields
@@ -11,14 +12,23 @@ if (isset($_POST['Update'])) {
     $username = $_POST["username"];
     $email = $_POST["email"];
 
+    var_dump($current_password);
+
     $hash_new_password = password_hash($new_password, PASSWORD_DEFAULT);
 
     //check if current pwassword is corrcect
-    $sql = "SELECT * FROM users ORDER BY usersID";
+    $sql = "SELECT * FROM users WHERE usersID= '$_SESSION[userid]'";
     $res = mysqli_query($conn, $sql);
     $row = mysqli_fetch_object($res);
 
     if (password_verify($current_password, $row->usersPassword)) {
+
+        //checks if the username is already taken
+        if(usernameExists($conn, $username, $email) !== false) {
+            $msg = "<p> User is already taken. </p>";
+            header("Location: ../pages/profil.php?error=$msg");
+            exit();
+        }
         //check if password is same
         if ($new_password == $confirm_new_password) {
             // update
