@@ -23,12 +23,12 @@ if (isset($_POST['Update'])) {
 
     if (password_verify($current_password, $row->usersPassword)) {
 
-        //checks if the username is already taken
-        if(usernameExists($conn, $username, $email) !== false) {
+        //TODO: checks if the username is already taken
+        /*if((usernameExists($conn, $username, $email)!== false) && (!isset ($_SESSION["username"]))){
             $msg = "<p> User is already taken. </p>";
             header("Location: ../pages/profil.php?error=$msg");
             exit();
-        }
+        }*/
         //check if password is same
         if ($new_password == $confirm_new_password) {
             // update

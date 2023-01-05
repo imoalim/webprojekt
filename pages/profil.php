@@ -6,7 +6,7 @@ include "../includes/config.php";
 ?>
 <div class="form-wrapper">
     <div class="container">
-        <form class="row g-2" action="../includes/userUpdate.php" method="POST">
+        <form class="row g-2" action="../includes/profil_userUpdate.php" method="POST">
             <?php
             if (isset($_GET['error'])) {
                 $a = $_GET ['error'];
@@ -20,6 +20,8 @@ include "../includes/config.php";
                 if (mysqli_num_rows($res) > 0) {
                     while ($row = mysqli_fetch_array($res)) {
                         //print_r($row ['usersUsername']);
+                        var_dump(($_SESSION["username"]));
+
                         ?>
 
                         <div class="col-12">
@@ -27,7 +29,6 @@ include "../includes/config.php";
                             <p>Bitte ändern sie wie gewünscht!</p>
                             <hr>
                         </div>
-                        <!-- TODO Speicher Variablen -->
                         <div class="col-sm-6 my-2">
                             <input type="text" class="form-control py-2" id="fname" name="fname" placeholder="Vorname"
                                    required="required" value="<?php echo $row ['usersFName'] ?>">

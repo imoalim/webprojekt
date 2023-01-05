@@ -55,7 +55,7 @@
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <?php
             if (isset($_SESSION['username']) && ($_SESSION['username']) == 'admin' ){
-                echo '<li class="nav-item"><a class="nav-link active" aria-current="page" href="'.$path.'pages/userverwaltung.php">Userverwaltung</a></li>';
+                echo '<li class="nav-item"><a class="nav-link active" aria-current="page" href="'.$path.'admin/userverwaltung.php">Userverwaltung</a></li>';
                 echo '<li class="nav-item"><a class="nav-link" aria-current="page" href="'.$path.'includes/logout.inc.php">Abmelden</a></li>';
             }
                if(isset($_SESSION["username"]) && ($_SESSION['username']) != 'admin') {

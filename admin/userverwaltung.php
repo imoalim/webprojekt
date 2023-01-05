@@ -30,7 +30,7 @@ include "../includes/config.php";
                         </tr>
                         </thead>
                         <tbody>
-                        <form action="../includes/admin_userUpdate.php" method="POST">
+                        <form action="inc/admin_userUpdate.php" method="POST">
                             <?php
 
                             if (isset($_GET['error'])) {
@@ -59,8 +59,7 @@ include "../includes/config.php";
                                             }
                                             ?>
                                         </td>
-                                        <!-- TODO:HIER IST WAHRSCHEINLICH DER FEHLER-->
-                                        <td><a href="../includes/edit-user.php?value=<?=$row["usersID"];?>"
+                                        <td><a href="inc/edit-user.php?id=<?=$row["usersID"];?>"
                                                class="btn btn-success">Edit</a></td>
                                         <td>
                                         </td>
