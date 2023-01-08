@@ -23,14 +23,14 @@ if (mysqli_num_rows($sql_run) > 0) {
 foreach ($sql_run
          as $users) {
 ?>
-<div class="container-fluid px-4" style="height: 100vh">
+<div class="container-fluid px-4" >
     <h1 class="mt-4">User: <?php echo $users ['usersUsername'] ?></h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item active">Dashboard</li>
         <li class="breadcrumb-item">Users</li>
         <li class="breadcrumb-item">Edit Users</li>
     </ol>
-    <div class="row">
+    <div class="row" style="height: 100vh">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
@@ -39,6 +39,7 @@ foreach ($sql_run
                 <div class="card-body">
                     <form action="admin_userUpdate.php" method="POST">
                         <input type="hidden" name="user_id" value="<?= $users['usersID'] ?>">
+                        <input type="hidden" name="user_id" value="<?= $users['status'] ?>">
                         <div class="row">
                             <div class="col-sm-6 my-2">
                                 <input type="text" class="form-control py-2" id="fname" name="fname"

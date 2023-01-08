@@ -8,6 +8,7 @@ if (isset($_POST['Update'])) {
 
     //get all input fields
     $user_id = $_POST['user_id'];
+    $status = $_POST['status'];
     $current_password = $_POST["current_password"];
     $new_password = $_POST["new_password"];
     $confirm_new_password = $_POST["confirm_new_password"];
@@ -43,16 +44,13 @@ if (isset($_POST['Update'])) {
         $msg = "<p> Profile has been successfully updated. </p>";
         header("Location: ../view-edit_user.php?error=$msg");
 
-    }
-
-else {
+    } else {
         $msg = "<p> Password  does not match. </p>";
-    header("Location: ../view-edit_user.php?error=$msg");
+        header("Location: ../view-edit_user.php?error=$msg");
     }
 
-
-
-   /* if (isset($_POST['Inactive'])) {
+}
+    if (isset($_POST['Inactive'])) {
         $inactive = $_POST['Inactive'];
         $inactive = 0;
         // update
@@ -64,7 +62,9 @@ else {
     } else {
         $msg = "<p> Password  does not match muia. </p>";
         header("Location: admin_userUpdate.php?error=$msg");
-    }*/
 
-} ?>
+
+    }
+
+?>
 

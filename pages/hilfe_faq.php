@@ -2,10 +2,10 @@
   include_once '../includes/header.php';
 ?>
 
-<div class="faq-wrapper my-2">
+<div class="flex-container" style=" margin-bottom: 20%" >
     <div class="container py-4">
         <div class="row d-flex justify-content-center">
-            <div class="col-8">
+            <div class="col-8" style="height: 100vh">
                 <h1 class="pb-1">Hilfe&sol;FAQs</h1>
                 <p>
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui doloremque, facilis dolorem cupiditate perspiciatis ipsum corporis veritatis, necessitatibus quibusdam natus animi fugiat repellat porro vel error unde nisi repellendus corrupti.

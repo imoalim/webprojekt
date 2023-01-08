@@ -121,6 +121,9 @@ function loginUser($conn, $username, $password)
         exit();
     }
 
+    //TODO: check if the status is active
+
+
     //checks if username already exists
     $usernameExists = usernameExists($conn, $username, $username);
 

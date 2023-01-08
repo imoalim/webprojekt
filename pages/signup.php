@@ -6,7 +6,7 @@
     <div class="container">
         <form class="row g-2" action="../includes/signup.inc.php" method="POST">
             <div class="col-12">
-                <h2>Registrierun</h2>
+                <h2>Registrierung</h2>
                 <p>Bitte füllen Sie die folgenden Felder aus!</p>
                 <hr>
             </div>
@@ -74,7 +74,7 @@
             </div>        
             <div class="col-md-12 my-2">
                 <label class="form-check-label">
-                <input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
+                <input type="checkbox" required="required"> I accept the <a href="terms&conditions.php">Terms of Use</a> &amp; <a href="privacy_policy.php">Privacy Policy</a></label>
             </div>
             <div class="col-md-12 my-2">
                 <button type="submit" name="submit" class="btn btn-primary btn-lg">Registrieren</button>
