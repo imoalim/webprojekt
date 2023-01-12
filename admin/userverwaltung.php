@@ -67,6 +67,7 @@ include "../includes/config.php";
                                 <th>Username</th>
                                 <th>Roles</th>
                                 <th>User-status</th>
+                                <th>Set User-status</th>
                                 <th>Edit</th>
                             </tr>
                             </thead>
@@ -102,15 +103,31 @@ include "../includes/config.php";
                                             </td>
                                             <td style="align-items: center"><?php
                                                 if ($row['status'] == '1') {
-                                                    echo "ACTIVE";
+                                                    echo  "<p class='btn btn-success'>Active</p>";
                                                 } else {
-                                                    echo "INACTIVE";
+                                                    echo  "<p class='btn btn-danger'>INACTIVE</p>";
                                                 }
                                                 ?>
                                             </td>
-                                            <td><a href="inc/edit-user.php?id=<?=$row["usersID"];?>"
-                                                   class="btn btn-success">Edit</a></td>
+                                           <td style="align-items: center"><?php
+                                                if($row['status']!="1")
+                                                    // if a course is active.php i.e. status is 1
+                                                    // the toggle button must be able to deactivate
+                                                    // we echo the hyperlink to the page "deactivate.php"
+                                                    // in order to make it look like a button
+                                                    // we use the appropriate css
+                                                    // red-deactivate
+                                                    // green- activate
+                                                    echo
+                                                        "<a href=inc/deactivate.php?id=".$row['usersID']." class='btn btn-success'>Activate</a>";
+                                                else
+                                                    echo
+                                                        "<a href=inc/active.php?id=".$row['usersID']." class='btn btn-danger'>Deactivate</a>";
 
+                                                ?>
+                                            </td>
+                                            <td><a href="inc/edit-user.php?id=<?=$row["usersID"];?>"
+                                                   class="btn btn-primary">Edit</a></td>
                                         </tr>
                                         <?php
                                     }

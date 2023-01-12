@@ -1,6 +1,11 @@
 <?php
   include_once '../includes/header.php';
-?>
+if (isset($_GET['error'])) {
+    $a = $_GET ['error'];
+    echo "<div class='d-flex justify-content-center'> $a </div>";
+}
+  ?>
+
 
 <div class="form-wrapper">
     <div class="container">

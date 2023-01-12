@@ -77,7 +77,8 @@ function usernameExists($conn, $username, $email)
 function createUser($conn, $fname, $lname, $email, $username, $password)
 {
 
-    $sql = "INSERT INTO users (usersFName, usersLName, usersEmail, usersUsername, usersPassword) VALUES (?, ?, ?, ?, ?);";
+    $sql = "INSERT INTO users (usersFName, usersLName, usersEmail, usersUsername, usersPassword, status) VALUES (?, ?, ?, ?, ?, 1);";
+
     //prepared statement makes sure user cannot inject data into database
     $stmt = mysqli_stmt_init($conn);
 
@@ -94,6 +95,7 @@ function createUser($conn, $fname, $lname, $email, $username, $password)
     mysqli_stmt_close($stmt);
 
     header("location: ../pages/signup.php?error=none");
+
     exit();
 }
 
@@ -110,7 +112,7 @@ function emptyInputLogin($username, $password)
     return $result;
 }
 
-function loginUser($conn, $username, $password)
+function loginUser($conn, $username, $password, )
 {
     //admin login
     if ($username == 'admin' && $password == '123') {
@@ -121,7 +123,7 @@ function loginUser($conn, $username, $password)
         exit();
     }
 
-    //TODO: check if the status is active
+    //TODO: check if the status is active.php
 
 
     //checks if username already exists
@@ -144,6 +146,7 @@ function loginUser($conn, $username, $password)
         $_SESSION["username"] = $usernameExists["usersUsername"];
         $_SESSION["userfname"] = $usernameExists["usersFName"];
         $_SESSION["useremail"] = $usernameExists["usersEmail"];
+        $_SESSION["status"] = $usernameExists["status"];
         header("location: ../index.php");
         exit();
     }

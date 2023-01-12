@@ -39,7 +39,7 @@ foreach ($sql_run
                 <div class="card-body">
                     <form action="admin_userUpdate.php" method="POST">
                         <input type="hidden" name="user_id" value="<?= $users['usersID'] ?>">
-                        <input type="hidden" name="user_id" value="<?= $users['status'] ?>">
+                        <input type="hidden" name="status" value="<?= $users['status'] ?>">
                         <div class="row">
                             <div class="col-sm-6 my-2">
                                 <input type="text" class="form-control py-2" id="fname" name="fname"
@@ -61,12 +61,7 @@ foreach ($sql_run
                                        placeholder="Email"
                                        required="required" value="<?php echo $users ['usersEmail'] ?>">
                             </div>
-                            <div class="col-md-6  my-2">
-                                <input type="password" class="form-control py-2" id="current_password"
-                                       name="current_password" placeholder="Altes Passwort bestätigen"
-                                       required="required"
-                                       value="<?php echo $users ['usersPassword'] ?>">
-                            </div>
+
                             <div class="col-md-6  my-2">
                                 <input type="password" class="form-control py-2" id="new_password" name="new_password"
                                        placeholder="Neues Passwort" required="required" value="">
@@ -79,10 +74,6 @@ foreach ($sql_run
                             <div class="col-md-12 my-2">
                                 <button type="submit" name="Update" class="btn btn-primary btn-lg">Update</button>
                             </div>
-                            <div class="col-md-12 my-2">
-                                <button type="button" name="Inactive" class="btn btn-danger">Inactive</button>
-                            </div>
-
                         </div>
                     </form>
 
