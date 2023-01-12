@@ -20,7 +20,7 @@ include "../includes/config.php";
                 if (mysqli_num_rows($res) > 0) {
                     while ($row = mysqli_fetch_array($res)) {
                         //print_r($row ['usersUsername']);
-                        var_dump(($_SESSION["username"]));
+                       // var_dump(($_SESSION["username"]));
 
                         ?>
 
