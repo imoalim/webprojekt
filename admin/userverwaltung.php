@@ -6,7 +6,6 @@ include "../includes/config.php";
 ?>
 
 <style>
-    /*TODO: FIX = table head when max-width is reached it disappears*/
     /*responsive*/
     @media (max-width: 850px) {
         .table thead {
@@ -42,7 +41,6 @@ include "../includes/config.php";
     }
 
 </style>
-<!--TODO: GET THE TABLE_FORM RESPONSIVE-->
 <div class="container-fluid px-4" style="margin-bottom: 2%">
 
         <h1 class="mt-4">User</h1>
@@ -79,7 +77,7 @@ include "../includes/config.php";
                                     $a = $_GET ['error'];
                                     echo "<div class='d-flex justify-content-center'> $a </div>";
                                 }
-                                //selecting everyone except admiin
+                                //selecting everyone except admin
                                 $sql = "SELECT * FROM users";
                                 $res = mysqli_query($conn, $sql);
                                 if (mysqli_num_rows($res) > 0) {
@@ -111,19 +109,16 @@ include "../includes/config.php";
                                             </td>
                                            <td style="align-items: center"><?php
                                                 if($row['status']!="1")
-                                                    // if a course is active.php i.e. status is 1
+                                                    // if a user is active.php i.e. status is 1
                                                     // the toggle button must be able to deactivate
                                                     // we echo the hyperlink to the page "deactivate.php"
                                                     // in order to make it look like a button
-                                                    // we use the appropriate css
-                                                    // red-deactivate
-                                                    // green- activate
+                                                    // we use bootstrap classes
                                                     echo
                                                         "<a href=inc/deactivate.php?id=".$row['usersID']." class='btn btn-success'>Activate</a>";
                                                 else
                                                     echo
                                                         "<a href=inc/active.php?id=".$row['usersID']." class='btn btn-danger'>Deactivate</a>";
-
                                                 ?>
                                             </td>
                                             <td><a href="inc/edit-user.php?id=<?=$row["usersID"];?>"
@@ -140,7 +135,7 @@ include "../includes/config.php";
                 </div>
             </div>
         </div>
-</div>
+ </div>
 
 <body>
 

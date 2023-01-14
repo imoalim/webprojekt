@@ -3,7 +3,6 @@
 /* Sign Up Functions */
 function emptyInputSignup($fname, $lname, $email, $username, $password, $passwordrpt)
 {
-    $result;
 
     if (empty($fname) || empty($lname) || empty($email) || empty($username) || empty($password) || empty($passwordrpt)) {
         $result = true;
@@ -15,8 +14,6 @@ function emptyInputSignup($fname, $lname, $email, $username, $password, $passwor
 
 function invalidUsername($username)
 {
-    $result;
-
     if (!preg_match("/^[a-zA-Z0-9]*/", $username)) {
         $result = true;
     } else {
@@ -27,8 +24,6 @@ function invalidUsername($username)
 
 function invalidEmail($email)
 {
-    $result;
-
     if (filter_var(!$email, FILTER_VALIDATE_EMAIL)) {
         $result = true;
     } else {
@@ -39,8 +34,6 @@ function invalidEmail($email)
 
 function passwordMatch($password, $passwordrpt)
 {
-    $result;
-
     if ($password !== $passwordrpt) {
         $result = true;
     } else {
@@ -102,8 +95,6 @@ function createUser($conn, $fname, $lname, $email, $username, $password)
 /* Login Functions */
 function emptyInputLogin($username, $password)
 {
-    $result;
-
     if (empty($username) || empty($password)) {
         $result = true;
     } else {
@@ -122,9 +113,6 @@ function loginUser($conn, $username, $password, )
         header("location: ../index.php");
         exit();
     }
-
-    //TODO: check if the status is active.php
-
 
     //checks if username already exists
     $usernameExists = usernameExists($conn, $username, $username);

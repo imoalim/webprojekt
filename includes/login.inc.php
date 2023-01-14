@@ -18,15 +18,17 @@ require_once 'functions.inc.php';
         $res = mysqli_query($conn, $sql);
         $row = mysqli_fetch_object($res);
 
+        // FOREACH = For every loop iteration, the result($res) of the current array element is assigned to $users
+       //and the array pointer is moved by one, until it reaches the last array element.
         foreach ($res
                  as $users) {
+            //check if the user is inactive
             if($users ['status']!=1){
                 header("location: ../pages/login.php?error=USER ACCOUNT INACTIVE");
                 exit();
             }
         }
                 /* error handling */
-
                 //checks if the user left anything blank
                 if (emptyInputLogin($username, $password) !== false) {
                     header("location: ../pages/login.php?error=emptyinput");

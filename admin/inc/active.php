@@ -10,13 +10,12 @@ include "../../includes/config.php";
         $id=$_GET['id'];
 
         // SQL query that sets the status
-        // to 1 to indicate activation.
+        // to 0 == inactive.
         $sql="UPDATE `users` SET 
              `status`=0 WHERE usersID='$id'";
 
         // Execute the query
         mysqli_query($conn,$sql);
     }
-
-    // Go back to course-page.php
-    header('location: ../userverwaltung.php');
+// Go back to userverwaltung.php
+  header('location: ../userverwaltung.php');

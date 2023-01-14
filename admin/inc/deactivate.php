@@ -11,13 +11,12 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
     // SQL query that sets the status
-    // to 1 to indicate activation.
+    // to 1 == active.
     $sql = "UPDATE `users` SET 
              `status`=1 WHERE usersID='$id'";
 
     // Execute the query
     mysqli_query($conn, $sql);
 }
-
-// Go back to course-page.php
+// Go back to userverwaltung.php
 header('location: ../userverwaltung.php');
