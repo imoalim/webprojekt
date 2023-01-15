@@ -30,7 +30,7 @@ if (isset($_POST['Update'])) {
             exit();
         }*/
         //check if password is same
-        if ($new_password == $confirm_new_password) {
+         if ($new_password == $confirm_new_password) {
             // update
             $sql = "UPDATE users SET usersFName='" . $fname . "', 
                                      usersLName = '" . $lname . "', 
@@ -40,12 +40,15 @@ if (isset($_POST['Update'])) {
             print_r($sql);
             mysqli_query($conn, $sql);
             $msg = "<p> Profile has been successfully updated. </p>";
+            header("Location: ../pages/profil.php?error=$msg&user=$username");
         } else {
             $msg = "<p> Password  does not match. </p>";
+            header("Location: ../pages/profil.php?error=$msg&user=$username");
         }
     } else {
         $msg = "<p> Password  is not correct. </p>";
+        header("Location: ../pages/profil.php?error=$msg&user=$username");
     }
-    header("Location: ../pages/profil.php?error=$msg");
+
 
 }

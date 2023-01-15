@@ -9,10 +9,13 @@ include "../includes/config.php";
         <form class="row g-2" action="../includes/profil_userUpdate.php" method="POST">
             <?php
             if (isset($_GET['error'])) {
+                //since the username is updated, the old session must be destroyed, so that the user can see profile form
                 $a = $_GET ['error'];
                 echo "<div class='d-flex justify-content-center'> $a </div>";
+                echo "<div class='d-flex justify-content-center'> <p> Please logout and Login with new user</p></div>";
+                echo "<div class='d-flex justify-content-center'> <a href='../includes/logout.inc.php' class='btn btn-danger'>Logout</a> </div>";
+
             }
-            include "../includes/functions.inc.php";
             $sql = "SELECT * FROM users WHERE usersUsername= '$_SESSION[username]'";
             $res = mysqli_query($conn, $sql);
             if ($res) {
@@ -61,6 +64,7 @@ include "../includes/config.php";
                                    required="required" value="">
                         </div>
                         <div class="col-md-12 my-2">
+                            <input type='hidden' value='send' name='first'>
                             <button type="submit" name="Update" class="btn btn-primary btn-lg">Update</button>
                         </div>
 
